@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invitación de Boda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #fffaf5;
+      margin: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .photo img {
+      width: 100%;
+      border-radius: 10px;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    h1, h2 {
+      font-family: 'Great Vibes', cursive;
+      color: #b8895a;
+      text-align: center;
+    }
+
+    section {
+      background: #fff;
+      margin: 30px 0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+
+    .timer {
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form button {
+      margin-top: 20px;
+      background: #b8895a;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    iframe {
+      width: 100%;
+      border: none;
+      height: 400px;
+      border-radius: 10px;
+    }
+
+    .button, button {
+      display: inline-block;
+      background: #b8895a;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    button{
+      display: block;
+      margin: 20px auto; /* 20px arriba y abajo, centrado horizontal */
+      padding: 12px 24px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- 1. Foto de los novios -->
+    <section class="photo">
+      <img src="./img1.webp" alt="Foto de los novios">
+    </section>
+
+    <!-- 2. Información -->
+    <section>
+      <h1>¡Nos casamos!</h1>
+      <p style="text-align:center;">Lucía & Martín<br>
+      Sábado, 15 de noviembre de 2025<br>
+      El evento más importante de nuestras vidas comienza y no sería lo mismo sin ti.<br>
+      !Te esperamos para celebrarlo juntos!</p>
+    </section>
+
+    <!-- 3. Temporizador -->
+    <section>
+      <h2>¿Cuánto queda?</h2>
+      <p>Cada vez falta menos para celebrar todos juntos este mágico día</p>
+      <div class="timer" id="countdown"></div>
+    </section>
+
+    <!-- 4. Resumen -->
+    <section>
+      <h2>Resumen</h2>
+      <p><p><strong>Fecha:</strong> 15 de noviembre de 2025<br>
+         <strong>Hora de la ceremonia:</strong> 13:00 hrs<br>
+         <strong>Lugar de la ceremonia:</strong> Parroquia Nuestra Señora de la Caridad<br>
+         <strong>Hora de la fiesta:</strong> 15:00 hrs<br>
+         <strong>Lugar de la ceremonia:</strong> Asador el Callejón, La Garrovilla<br></p>
+    </section>
+
+    <!-- 5. Formulario personalizado -->
+    <form action="https://formsubmit.co/mariateresacalvopena13@gmail.com" method="POST">
+  
+    <label>¿Asistirás?</label>
+  <select name="asistencia">
+    <option value="Sí">Sí</option>
+    <option value="No">No</option>
+  </select>
+  
+  <label>Nombre completo:</label>
+  <input type="text" name="nombre" required>
+
+
+  <label>¿Cuántos te acompañan?</label>
+  <input type="number" name="acompañantes" min="0">
+
+  <label>¿Tienes alguna alergia alimentaria?</label>
+  <textarea name="alergias"></textarea>
+
+  <label>¿Quieres usar el servicio de autobús?</label>
+  <select name="autobus">
+    <option value="Sí">Sí</option>
+    <option value="No">No</option>
+  </select>
+
+  <!-- Opcionales para evitar spam -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <button type="submit">Enviar confirmación</button>
+</form>
+
+
+    <!-- 6. Mapas -->
+    <section>
+      <h2>Ubicación ceremonia</h2>
+<button onclick="window.open('https://maps.app.goo.gl/PmJgoK7t1c9opfhv7', '_blank')">
+  Ver ubicación ceremonia
+</button>
+
+      <h2 style="margin-top: 20px;">Ubicación fiesta</h2>
+<button onclick="window.open('https://maps.app.goo.gl/JwiWrpG9s8ss12YV7', '_blank')">
+  Ver ubicación fiesta
+</button>    </section>
+
+    <!-- 7. Subida de fotos -->
+    <section>
+      <h2>Recuerdos del gran día</h2>
+      <p>¡Queremos guardar todos los momentos especiales! Sube tus fotos al álbum:</p>
+      <a href="https://photos.app.goo.gl/TUALBUM" class="button" target="_blank">Subir fotos</a>
+    </section>
+
+  </div>
+
+  <!-- JS del temporizador y formulario -->
+  <script>
+    // Temporizador
+    const countdown = () => {
+      const eventDate = new Date("2025-11-15T13:00:00");
+      const now = new Date();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "¡Hoy es el gran día!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        `${days} días, ${hours} hrs, ${minutes} min, ${seconds} seg`;
+    };
+    setInterval(countdown, 1000);
+
+    // Formulario
+    document.getElementById("rsvpForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        nombre: form.nombre.value,
+        asistencia: form.asistencia.value,
+        acompañantes: form.acompañantes.value,
+        alergias: form.alergias.value,
+        autobus: form.autobus.value
+      };
+
+      console.log("Datos enviados (simulado):", data);
+      document.getElementById("mensajeConfirmacion").textContent = "¡Gracias por confirmar!";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
